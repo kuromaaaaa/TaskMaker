@@ -12,17 +12,17 @@ public class TaskAnalyzer : MonoBehaviour
     [SerializeField] SecretKeys _secretKeys;
 
     [SerializeField] NotionCreateTask _notionCreateTask;
-    private async void Start()
-    {
-        string taskJson = await AnalyzeTasksAsync("明日の10時までに履歴書を提出してください。\n金曜日は株式会社ルクレの面接があります。\nあと時間があればESを修正しておきたい。");
-        
-        TaskList tasks = TaskParser.ParseTaskList(taskJson);
-
-        foreach (var task in tasks.tasks)
-        {
-            await _notionCreateTask.CreateTask(task.title, task.due);
-        }
-    }
+    // private async void Start()
+    // {
+    //     string taskJson = await AnalyzeTasksAsync("明日の10時までに履歴書を提出してください。\n金曜日は株式会社ルクレの面接があります。\nあと時間があればESを修正しておきたい。");
+    //     
+    //     TaskList tasks = TaskParser.ParseTaskList(taskJson);
+    //
+    //     foreach (var task in tasks.tasks)
+    //     {
+    //         await _notionCreateTask.CreateTask(task.title, task.due);
+    //     }
+    // }
 
 
     public async UniTask<string> AnalyzeTasksAsync(string inputText)

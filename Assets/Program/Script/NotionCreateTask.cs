@@ -35,11 +35,13 @@ public class NotionCreateTask : MonoBehaviour
 
         if (!string.IsNullOrWhiteSpace(due))
         {
+            
+            string isoDue = due.Replace(" ", "T") + ":00+09:00";
             properties.due = new DateProperty
             {
                 date = new DateValue
                 {
-                    start = due
+                    start = isoDue
                 }
             };
         }
